@@ -9,13 +9,13 @@ This is code for an in-class kaggle competition concerned with classifying image
 The final predictions attained a test set accuracy of 72%. This accuracy was reached by using a weighted ensemble of five pre trained convolutional networks. This section summarises our approach. 
 
 #### Data preprocessing and augmentation
-All images were resised to 244x244 and normalised to a scale of zero to one. To augment the data, a random width and heihgt shift was sampled from U[0, 0.2]. Images were rotated with the degrees of rotation being sampled from 
+All images were resised to 244x244x3 and pixel values were rescaled to a scale of zero to one. To augment the data, a random width and height shift was imlemented with shifting proportions sampled from U[0, 0.2]. Images were rotated with the degrees of rotation sampled from 
 U[0,25]. Finally, images were horizontally flipped with a probability of .5. 
-10% of the training set was safed for validation purposes. 
+10% of the training set was saved for validation purposes. 
 
 
 #### Tranfer learning
-Five pretrained models were imported from [the keras website](https://keras.io/api/applications/), along with the weights trained on the imagenet dataset:
+I imported five pretrained models from [the keras website](https://keras.io/api/applications/), along with the weights trained on the imagenet dataset:
 - DenseNet169
 - InceptionV3
 - MobileNet
@@ -30,8 +30,7 @@ To decrease the varaince of predictions on the test set, the weighted sum of the
 
 #### Explainability
 
-To better understand the model, we used LIME, which is framework for model explainability that allows you to display which part of an image contribute most to its classification. LIME works by creating different versions of an image where different patches are blacked out, and looking at the effect of these masks on the classification confidence of the model. 
-
+To better understand the model, I used LIME, which is a framework for local model explainability that allows you to display which parts of an image contribute most to its classification. LIME works by creating different versions of an image where different patches are blacked out, and looking at the effect of these masks on the classification confidence of the model:
 
 ![LIME plots for inception model](/lime_images.png "LIME plots for inception model")
 
