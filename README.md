@@ -1,8 +1,8 @@
-# Food recognition with an esemble of transfer leanring models
+# Food recognition with an esemble of transfer learning models
 
 This is code for an in-class kaggle competition concerned with classifying images of food. The data consists of 30612 training images with labels belonging to one of 80 food categories, and 7653 test images without labels. Labels for the testset are not available, but the accuracy of predictions could be retrieved on kaggle. 
 
-
+*Some random images from the training set* 
 ![Random images](/random_images.png "Random Images")
 
 # Model fitting
@@ -32,6 +32,7 @@ To decrease the varaince of predictions on the test set, the weighted sum of the
 
 To better understand the model, I used LIME, which is a framework for local model explainability that allows you to display which parts of an image contribute most to its classification. LIME works by creating different versions of an image where different patches are blacked out, and looking at the effect of these masks on the classification confidence of the model:
 
+*Lime plots for the same random training images* 
 ![LIME plots for inception model](/lime_images.png "LIME plots for inception model")
 
 It looks like the model is generally looking in the right place. The foods itself are mostly highlighted on the different images. However, other objects also seem to influence the calssification. For example, different parts of plates and dishes seem to have an effect on the predictions of the model. This could possibly be because certain food items often cooccur with certain types of food. Also, we see some images where seamingly random, irrelevant parts of the image have a large effect on the predictions. This in an indication of high variance. Making predictions based on multiple models can have lower this variance slightly, which is why the ensemble had a higher accuracy (72%) than the individal models. 
