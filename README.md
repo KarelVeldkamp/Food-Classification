@@ -36,6 +36,6 @@ To decrease the varaince of predictions on the test set, the weighted sum of the
 To better understand the model, we used LIME, which is framework for model explainability that allows you to display which part of an image contribute most to its classification. LIME works by creating different versions of an image where different patches are blacked out, and looking at the effect of these masks on the classification confidence of the model. 
 
 
-![LIME plots for some random images(/data/lime_images.png "LIME plots")
+![LIME plots for some random images(/lime_images.png "LIME plots")
 
 
